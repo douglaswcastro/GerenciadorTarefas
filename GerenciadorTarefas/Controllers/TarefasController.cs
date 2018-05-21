@@ -120,6 +120,58 @@ namespace GerenciadorTarefas.Controllers
             return RedirectToAction("Index");
         }
 
+        public bool Criar(Tarefa tarefa)
+        {
+            try
+            {
+                db.Tarefa.Add(tarefa);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+        public bool Deletar(int id)
+        {
+            try
+            {
+                var tarefa = db.Tarefa.Find(id);
+                if (tarefa != null)
+                {
+                    db.Tarefa.Remove(tarefa);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception EX_NAME)
+            {
+                return false;
+            }
+        }
+
+        public bool Editar(Tarefa tarefa)
+        {
+            try
+            {
+                db.Entry(tarefa).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+
+            }
+            catch (Exception EX_NAME)
+            {
+                return false;
+            }
+
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
