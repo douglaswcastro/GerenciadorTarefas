@@ -29,3 +29,33 @@ C:\Users\dougl\Documents\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\S
 C:\Users\dougl\Documents\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\dougl\Documents\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.dll
 C:\Users\dougl\Documents\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.pdb
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\ApplicationInsights.config
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\GerenciadorTarefasTests1.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\GerenciadorTarefasTests1.pdb
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\GerenciadorTarefas.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.Optimization.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\EntityFramework.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.Razor.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\GerenciadorTarefas.pdb
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\GerenciadorTarefas.dll.config
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.Mvc.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.Optimization.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\EntityFramework.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.Razor.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.csprojResolveAssemblyReference.cache
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.dll
+C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.pdb

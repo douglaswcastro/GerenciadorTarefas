@@ -45,10 +45,11 @@ namespace GerenciadorTarefas.Tests
         [TestMethod()]
         public void DeleteTest()
         {
+           
             int id = 3;
             bool result = tarefas.Deletar(id);
             Assert.IsFalse(result, "Não foi realizado a Exclusao");
-            Assert.Fail();
+            //Assert.Fail();
         }
 
     }
