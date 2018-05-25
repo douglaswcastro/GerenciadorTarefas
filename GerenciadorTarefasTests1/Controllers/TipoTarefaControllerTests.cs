@@ -15,7 +15,7 @@ namespace GerenciadorTarefas.Controllers.Tests
         public void verificaTarefaTest()
         {
             //Arrenge
-            string idTest = "1";
+            int idTest = 1;
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
@@ -23,7 +23,7 @@ namespace GerenciadorTarefas.Controllers.Tests
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
-            MockTipoTarefaAtual.verificaTarefa(setIdTarefa("1"), setNomeTarefa("Tarefa Teste"));
+            MockTipoTarefaAtual.verificaTarefa(setIdTarefa(1), setNomeTarefa("Tarefa Teste"));
 
             //Assert
             Assert.AreEqual(tipoTarefaEsperado.getIdTarefa(), MockTipoTarefaAtual.getIdTarefa());
@@ -34,7 +34,7 @@ namespace GerenciadorTarefas.Controllers.Tests
         public void verificaTarefaTestFalha()
         {
             //Arrenge
-            string idTest = "1";
+            int idTest = 1;
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
@@ -42,11 +42,68 @@ namespace GerenciadorTarefas.Controllers.Tests
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
-            MockTipoTarefaAtual.verificaTarefa(setIdTarefa("5"), setNomeTarefa("Tarefa Manutenção"));
+            MockTipoTarefaAtual.verificaTarefa(setIdTarefa(5), setNomeTarefa("Tarefa Manutenção"));
 
             //Assert
             Assert.AreNotEqual(tipoTarefaEsperado.getIdTarefa(), MockTipoTarefaAtual.getIdTarefa());
             Assert.AreNotEqual(tipoTarefaEsperado.getNomeTarefa(), MockTipoTarefaAtual.getNomeTarefa());
         }
+
+        [TestMethod()]
+        public void verificaTarefaTestFalhaSemValores()
+        {
+            //Arrenge
+            int idTest = 1;
+            string nomeTest = "Tarefa Teste";
+
+            TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
+            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+
+            //Act
+            tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
+            MockTipoTarefaAtual.verificaTarefa(setIdTarefa(0), setNomeTarefa(""));
+
+            //Assert
+            Assert.AreNotEqual(tipoTarefaEsperado.getIdTarefa(), MockTipoTarefaAtual.getIdTarefa());
+            Assert.AreNotEqual(tipoTarefaEsperado.getNomeTarefa(), MockTipoTarefaAtual.getNomeTarefa());
+        }
+
+        [TestMethod()]
+        public void verificaTarefaTestFalhaSemId()
+        {
+            //Arrenge
+            int idTest = 1;
+            string nomeTest = "Tarefa Teste";
+
+            TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
+            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+
+            //Act
+            tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
+            MockTipoTarefaAtual.verificaTarefa(setIdTarefa(0), setNomeTarefa("Tarefa Manutenção"));
+
+            //Assert
+            Assert.AreNotEqual(tipoTarefaEsperado.getIdTarefa(), MockTipoTarefaAtual.getIdTarefa());
+            
+        }
+
+        [TestMethod()]
+        public void verificaTarefaTestFalhaSemNome()
+        {
+            //Arrenge
+            int idTest = 1;
+            string nomeTest = "Tarefa Teste";
+
+            TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
+            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+
+            //Act
+            tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
+            MockTipoTarefaAtual.verificaTarefa(setIdTarefa(5), setNomeTarefa(""));
+
+            //Assert
+            Assert.AreNotEqual(tipoTarefaEsperado.getNomeTarefa(), MockTipoTarefaAtual.getNomeTarefa());
+        }
+
     }
 }

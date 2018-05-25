@@ -9,10 +9,11 @@ namespace GerenciadorTarefas.Controllers
     public class TipoTarefaController : Controller
     {
         //Variaveis privadas da classe TipoTarefa
-        private string idTarefa, nomeTarefa;
+        private string nomeTarefa;
+        private int idTarefa;
 
         //Metodo para verificar os tipos de Tarefas existentes.
-        public void verificaTarefa(string id, string nome)
+        public void verificaTarefa(int id, string nome)
         {
             this.idTarefa = id;
             this.nomeTarefa = nome;
@@ -20,11 +21,11 @@ namespace GerenciadorTarefas.Controllers
 
 
         //Metodos Get e Set para ID
-        public string getIdTarefa()
+        public int getIdTarefa()
         {
             return idTarefa;
         }
-        public string setIdTarefa(string id)
+        public int setIdTarefa(int id)
         {
             this.idTarefa = id;
             return idTarefa;

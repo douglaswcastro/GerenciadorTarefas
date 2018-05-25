@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GerenciadorTarefas.Models;
+using System.Web.Mvc;
 
 namespace GerenciadorTarefas.Tests
 {
@@ -51,6 +52,112 @@ namespace GerenciadorTarefas.Tests
             Assert.IsFalse(result, "Não foi realizado a Exclusao");
             //Assert.Fail();
         }
+
+        [TestMethod()]
+        public void DetailsTarefasTest()
+        {
+            //Arrenge
+            Tarefa tarefa = new Tarefa();
+            int id = 1;
+
+            //Act
+            tarefa.Prioridade = 3;
+            tarefa.Status = 1;
+            tarefa.Titulo = "Nova Tarefa";
+            tarefa.Descricao = "Teste";
+            tarefa.UsuarioId = 1;
+            tarefa.Id = 1;
+            int result = tarefa.Id;
+
+            //Assert
+            Assert.AreEqual(result, id);
+            
+        }
+
+        [TestMethod()]
+        public void DetailsTarefasTestFalha()
+        {
+            //Arrenge
+            Tarefa tarefa = new Tarefa();
+            int id = 0;
+
+            //Act
+            tarefa.Prioridade = 3;
+            tarefa.Status = 1;
+            tarefa.Titulo = "Nova Tarefa";
+            tarefa.Descricao = "Teste";
+            tarefa.UsuarioId = 1;
+            tarefa.Id = 1;
+            int result = tarefa.Id;
+
+            //Assert
+            Assert.AreNotEqual(result, id);
+
+        }
+
+        [TestMethod()]
+        public void DetailsTarefasTestFalhaNulo()
+        {
+            //Arrenge
+            Tarefa tarefa = new Tarefa();
+            int? id = null;
+
+            //Act
+            tarefa.Prioridade = 3;
+            tarefa.Status = 1;
+            tarefa.Titulo = "Nova Tarefa";
+            tarefa.Descricao = "Teste";
+            tarefa.UsuarioId = 1;
+            tarefa.Id = 1;
+            int? result = tarefa.Id;
+
+            //Assert
+            Assert.AreNotEqual(result, id);
+
+        }
+
+        [TestMethod()]
+        public void DetailsTarefasTestFalhaNuloConvertidoParaZero()
+        {
+            //Arrenge
+            Tarefa tarefa = new Tarefa();
+            int? id = 0;
+
+            //Act
+            tarefa.Prioridade = 3;
+            tarefa.Status = 1;
+            tarefa.Titulo = "Nova Tarefa";
+            tarefa.Descricao = "Teste";
+            tarefa.UsuarioId = 1;
+            tarefa.Id = 0;
+            int? result = tarefa.Id;
+
+            //Assert
+            Assert.AreEqual(result, id);
+
+        }
+
+        [TestMethod()]
+        public void CriarTarefasTestFalha()
+        {
+            //Arrenge
+            Tarefa tarefa = new Tarefa();
+            bool criado = true;
+
+            //Act
+            tarefa.Prioridade = 3;
+            tarefa.Status = 1;
+            tarefa.Titulo = "Nova Tarefa";
+            tarefa.Descricao = "Teste";
+            tarefa.UsuarioId = 1;
+            tarefa.Id = 0;
+            criado = tarefas.Criar(tarefa);
+
+            //Assert
+            Assert.IsFalse(criado);
+
+        }
+
 
     }
 }

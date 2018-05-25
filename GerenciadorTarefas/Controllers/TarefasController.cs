@@ -22,9 +22,9 @@ namespace GerenciadorTarefas.Controllers
         }
 
         // GET: Tarefas/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
