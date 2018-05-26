@@ -27,22 +27,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Prioridade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Prioridade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.DataCriacao)
         </dt>
 
@@ -59,6 +43,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Prioridade.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridade.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Descricao)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Usuario.Nome)
         </dt>
 
@@ -66,9 +66,17 @@
             @Html.DisplayFor(model => model.Usuario.Nome)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoTarefa.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoTarefa.Descricao)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

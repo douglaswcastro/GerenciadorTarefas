@@ -17,12 +17,16 @@ namespace GerenciadorTarefas.Models
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
-        public int Prioridade { get; set; }
-        public int Status { get; set; }
         public System.DateTime DataCriacao { get; set; }
-        public System.DateTime DataTermino { get; set; }
+        public Nullable<System.DateTime> DataTermino { get; set; }
+        public int StatusId { get; set; }
+        public int PrioridadeId { get; set; }
         public int UsuarioId { get; set; }
+        public int TipoTarefaId { get; set; }
     
+        public virtual Prioridade Prioridade { get; set; }
+        public virtual Status Status { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual TipoTarefa TipoTarefa { get; set; }
     }
 }

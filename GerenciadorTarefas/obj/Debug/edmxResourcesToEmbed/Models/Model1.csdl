@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBDTECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Prioridade">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarefa" Relationship="Self.FK_Prioridade" FromRole="Prioridade" ToRole="Tarefa" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarefa" Relationship="Self.FK_Status" FromRole="Status" ToRole="Tarefa" />
+  </EntityType>
+  <EntityType Name="Tarefa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DataTermino" Type="DateTime" Precision="0" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="PrioridadeId" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Prioridade" Relationship="Self.FK_Prioridade" FromRole="Tarefa" ToRole="Prioridade" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Status" FromRole="Tarefa" ToRole="Status" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario" FromRole="Tarefa" ToRole="Usuario" />
+    <Property Name="TipoTarefaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TipoTarefa" Relationship="DBDTECModel.FK_TipoTarefa" FromRole="Tarefa" ToRole="TipoTarefa" />
+  </EntityType>
+  <EntityType Name="TipoTarefa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarefa" Relationship="DBDTECModel.FK_TipoTarefa" FromRole="TipoTarefa" ToRole="Tarefa" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarefa" Relationship="Self.FK_Usuario" FromRole="Usuario" ToRole="Tarefa" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Prioridade">
+    <End Role="Prioridade" Type="Self.Prioridade" Multiplicity="1" />
+    <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridade">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tarefa">
+        <PropertyRef Name="PrioridadeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tarefa">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tarefa">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBDTECEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Prioridade" EntityType="Self.Prioridade" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Tarefa" EntityType="Self.Tarefa" />
+    <EntitySet Name="TipoTarefa" EntityType="Self.TipoTarefa" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+    <AssociationSet Name="FK_Prioridade" Association="Self.FK_Prioridade">
+      <End Role="Prioridade" EntitySet="Prioridade" />
+      <End Role="Tarefa" EntitySet="Tarefa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status" Association="Self.FK_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Tarefa" EntitySet="Tarefa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Tarefa" EntitySet="Tarefa" />
+    </AssociationSet>
+    <FunctionImport Name="UP_TOI_APAGAR_CALCULOS_REPETIDOS" />
+    <FunctionImport Name="UP_TOI_EXPORT_001">
+      <Parameter Name="TIPO_TOI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UP_TOI_ImpCalculado_TO_Calculo" />
+    <FunctionImport Name="UP_TOI_ImpEncerramento_To_Toi" />
+    <FunctionImport Name="UP_TOI_ImpFaturados_To_ToiFaturamento" />
+    <FunctionImport Name="UP_TOI_ImpGerado_TO_Toi" />
+    <FunctionImport Name="UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" />
+    <FunctionImport Name="UP_TOI_Indicador_TOI_POR_STATUS" />
+    <AssociationSet Name="FK_TipoTarefa" Association="DBDTECModel.FK_TipoTarefa">
+      <End Role="TipoTarefa" EntitySet="TipoTarefa" />
+      <End Role="Tarefa" EntitySet="Tarefa" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_TipoTarefa">
+    <End Type="DBDTECModel.TipoTarefa" Role="TipoTarefa" Multiplicity="1" />
+    <End Type="DBDTECModel.Tarefa" Role="Tarefa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTarefa">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tarefa">
+        <PropertyRef Name="TipoTarefaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

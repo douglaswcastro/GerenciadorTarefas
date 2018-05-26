@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using GerenciadorTarefas.Models;
@@ -12,7 +13,7 @@ namespace GerenciadorTarefas.Controllers
 {
     public class UsuariosController : Controller
     {
-        private DBDTECEntities db = new DBDTECEntities();
+        private DBDTECEntities1 db = new DBDTECEntities1();
 
         // GET: Usuarios
         public ActionResult Index()

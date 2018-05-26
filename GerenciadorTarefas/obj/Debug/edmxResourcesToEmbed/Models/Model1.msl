@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBDTECModelStoreContainer" CdmEntityContainer="DBDTECEntities1">
+    <EntitySetMapping Name="Prioridade">
+      <EntityTypeMapping TypeName="DBDTECModel.Prioridade">
+        <MappingFragment StoreEntitySet="Prioridade">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="DBDTECModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarefa">
+      <EntityTypeMapping TypeName="DBDTECModel.Tarefa">
+        <MappingFragment StoreEntitySet="Tarefa">
+          <ScalarProperty Name="TipoTarefaId" ColumnName="TipoTarefaId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+          <ScalarProperty Name="DataTermino" ColumnName="DataTermino" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="PrioridadeId" ColumnName="PrioridadeId" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoTarefa">
+      <EntityTypeMapping TypeName="DBDTECModel.TipoTarefa">
+        <MappingFragment StoreEntitySet="TipoTarefa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="DBDTECModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="database_firewall_rules">
+      <EntityTypeMapping TypeName="DBDTECModel.database_firewall_rules">
+        <MappingFragment StoreEntitySet="database_firewall_rules">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+          <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UP_TOI_APAGAR_CALCULOS_REPETIDOS" FunctionName="DBDTECModel.Store.UP_TOI_APAGAR_CALCULOS_REPETIDOS" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_EXPORT_001" FunctionName="DBDTECModel.Store.UP_TOI_EXPORT_001" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_ImpCalculado_TO_Calculo" FunctionName="DBDTECModel.Store.UP_TOI_ImpCalculado_TO_Calculo" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_ImpEncerramento_To_Toi" FunctionName="DBDTECModel.Store.UP_TOI_ImpEncerramento_To_Toi" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_ImpFaturados_To_ToiFaturamento" FunctionName="DBDTECModel.Store.UP_TOI_ImpFaturados_To_ToiFaturamento" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_ImpGerado_TO_Toi" FunctionName="DBDTECModel.Store.UP_TOI_ImpGerado_TO_Toi" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" FunctionName="DBDTECModel.Store.UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" />
+    <FunctionImportMapping FunctionImportName="UP_TOI_Indicador_TOI_POR_STATUS" FunctionName="DBDTECModel.Store.UP_TOI_Indicador_TOI_POR_STATUS" />
+  </EntityContainerMapping>
+</Mapping>

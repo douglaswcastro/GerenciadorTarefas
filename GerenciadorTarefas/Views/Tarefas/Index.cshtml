@@ -18,19 +18,22 @@
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prioridade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DataCriacao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataTermino)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Prioridade.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Descricao)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoTarefa.Descricao)
         </th>
         <th></th>
     </tr>
@@ -44,19 +47,22 @@
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Prioridade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataTermino)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Prioridade.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Descricao)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Usuario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoTarefa.Descricao)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

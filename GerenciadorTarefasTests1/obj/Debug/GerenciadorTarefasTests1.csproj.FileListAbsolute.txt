@@ -59,3 +59,7 @@ C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests
 C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.csprojResolveAssemblyReference.cache
 C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.dll
 C:\Users\Talisson\Desktop\Projeto TDD\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.pdb
+C:\Users\dougl\Documents\Visual Studio 2017\Projects\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.csprojResolveAssemblyReference.cache
+C:\Users\dougl\Documents\Visual Studio 2017\Projects\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.csproj.CoreCompileInputs.cache
+C:\Users\dougl\Documents\Visual Studio 2017\Projects\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.dll
+C:\Users\dougl\Documents\Visual Studio 2017\Projects\GerenciadorTarefas\GerenciadorTarefasTests1\obj\Debug\GerenciadorTarefasTests1.pdb

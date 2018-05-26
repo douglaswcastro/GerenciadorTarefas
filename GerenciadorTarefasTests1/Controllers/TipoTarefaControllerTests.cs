@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GerenciadorTarefas.Controllers.Tests
 {
     [TestClass()]
-    public class TipoTarefaControllerTests : TipoTarefaController
+    public class TipoTarefaControllerTests : TipoTarefasController
     {
         [TestMethod()]
         public void verificaTarefaTest()
@@ -19,7 +19,7 @@ namespace GerenciadorTarefas.Controllers.Tests
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
-            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+            TipoTarefasController MockTipoTarefaAtual = new TipoTarefasController();
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
@@ -38,7 +38,7 @@ namespace GerenciadorTarefas.Controllers.Tests
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
-            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+            TipoTarefasController MockTipoTarefaAtual = new TipoTarefasController();
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
@@ -57,7 +57,7 @@ namespace GerenciadorTarefas.Controllers.Tests
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
-            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+            TipoTarefasController MockTipoTarefaAtual = new TipoTarefasController();
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
@@ -76,7 +76,7 @@ namespace GerenciadorTarefas.Controllers.Tests
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
-            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+            TipoTarefasController MockTipoTarefaAtual = new TipoTarefasController();
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);
@@ -95,7 +95,7 @@ namespace GerenciadorTarefas.Controllers.Tests
             string nomeTest = "Tarefa Teste";
 
             TipoTarefaControllerTests tipoTarefaEsperado = new TipoTarefaControllerTests();
-            TipoTarefaController MockTipoTarefaAtual = new TipoTarefaController();
+            TipoTarefasController MockTipoTarefaAtual = new TipoTarefasController();
 
             //Act
             tipoTarefaEsperado.verificaTarefa(idTest, nomeTest);

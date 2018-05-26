@@ -12,19 +12,19 @@ namespace GerenciadorTarefas.Controllers
 {
     public class TarefasController : Controller
     {
-        private DBDTECEntities db = new DBDTECEntities();
+        private DBDTECEntities1 db = new DBDTECEntities1();
 
         // GET: Tarefas
         public ActionResult Index()
         {
-            var tarefa = db.Tarefa.Include(t => t.Usuario);
+            var tarefa = db.Tarefa.Include(t => t.Prioridade).Include(t => t.Status).Include(t => t.Usuario).Include(t => t.TipoTarefa);
             return View(tarefa.ToList());
         }
 
         // GET: Tarefas/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -39,7 +39,10 @@ namespace GerenciadorTarefas.Controllers
         // GET: Tarefas/Create
         public ActionResult Create()
         {
+            ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Descricao");
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Descricao");
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome");
+            ViewBag.TipoTarefaId = new SelectList(db.TipoTarefa, "Id", "Descricao");
             return View();
         }
 
@@ -48,7 +51,7 @@ namespace GerenciadorTarefas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Descricao,Prioridade,Status,DataCriacao,DataTermino,UsuarioId")] Tarefa tarefa)
+        public ActionResult Create([Bind(Include = "Id,Titulo,Descricao,DataCriacao,DataTermino,StatusId,PrioridadeId,UsuarioId,TipoTarefaId")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +60,10 @@ namespace GerenciadorTarefas.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Descricao", tarefa.PrioridadeId);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Descricao", tarefa.StatusId);
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", tarefa.UsuarioId);
+            ViewBag.TipoTarefaId = new SelectList(db.TipoTarefa, "Id", "Descricao", tarefa.TipoTarefaId);
             return View(tarefa);
         }
 
@@ -73,7 +79,10 @@ namespace GerenciadorTarefas.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Descricao", tarefa.PrioridadeId);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Descricao", tarefa.StatusId);
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", tarefa.UsuarioId);
+            ViewBag.TipoTarefaId = new SelectList(db.TipoTarefa, "Id", "Descricao", tarefa.TipoTarefaId);
             return View(tarefa);
         }
 
@@ -82,7 +91,7 @@ namespace GerenciadorTarefas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Descricao,Prioridade,Status,DataCriacao,DataTermino,UsuarioId")] Tarefa tarefa)
+        public ActionResult Edit([Bind(Include = "Id,Titulo,Descricao,DataCriacao,DataTermino,StatusId,PrioridadeId,UsuarioId,TipoTarefaId")] Tarefa tarefa)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +99,10 @@ namespace GerenciadorTarefas.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.PrioridadeId = new SelectList(db.Prioridade, "Id", "Descricao", tarefa.PrioridadeId);
+            ViewBag.StatusId = new SelectList(db.Status, "Id", "Descricao", tarefa.StatusId);
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", tarefa.UsuarioId);
+            ViewBag.TipoTarefaId = new SelectList(db.TipoTarefa, "Id", "Descricao", tarefa.TipoTarefaId);
             return View(tarefa);
         }
 
@@ -118,58 +130,6 @@ namespace GerenciadorTarefas.Controllers
             db.Tarefa.Remove(tarefa);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public bool Criar(Tarefa tarefa)
-        {
-            try
-            {
-                db.Tarefa.Add(tarefa);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
-
-        }
-        public bool Deletar(int id)
-        {
-            try
-            {
-                var tarefa = db.Tarefa.Find(id);
-                if (tarefa != null)
-                {
-                    db.Tarefa.Remove(tarefa);
-                    db.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception EX_NAME)
-            {
-                return false;
-            }
-        }
-
-        public bool Editar(Tarefa tarefa)
-        {
-            try
-            {
-                db.Entry(tarefa).State = EntityState.Modified;
-                db.SaveChanges();
-                return true;
-
-            }
-            catch (Exception EX_NAME)
-            {
-                return false;
-            }
-
         }
 
         protected override void Dispose(bool disposing)

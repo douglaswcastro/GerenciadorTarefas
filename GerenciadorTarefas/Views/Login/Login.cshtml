@@ -1,0 +1,141 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gerenciador de Tarefas</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="modal-dialog" role="document">
+        <form action="login/logar" method="post">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                </div>
+                <div class="modal-body text-center">
+                    <div class="form-group text-center">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" id="Email" name="Email" class="form-control" placeholder="Informe o email" autofocus />
+                        <!--mensagem validação-->
+                        <div id="validacao-email" class="validacao badge badge-danger"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha" class="sr-only">Senha</label>
+                        <input type="password" id="Senha" name="Senha" class="form-control mt-2" placeholder="Senha" />
+                        <!--mensagem validação-->
+                        <div id="validacao-senha" class="validacao badge badge-danger"></div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Logar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    @*<p class="text-center">Não possui uma conta? <a href="<?= base_url('usuario')?>">Criar conta</a></p>*@
+
+    <!-- Validação dos campos -->
+    <script>
+        $(document).ready(function () {
+            $("#email").keyup(checar);
+            $("#senha").keyup(checar);
+        });
+
+        function checar() {
+            var email = $("#email").val();
+            var senha = $("#senha").val();
+
+            var emailFiltro = "^.+.+\..{2,}$";
+            var emailInvalido = "[\(\)\<\>\,\;\:\\\/\"\[\]]";
+
+            if (email != "") {
+                $("#email").css("border-color", "green");
+                $("#validacao-email").hide();
+
+                if (!(emailFiltro.test(email)) || email.match(emailInvalido)) {
+                    $("#email").focus();
+                    $("#email").css("border-color", "red");
+                    $("#validacao-email").show();
+                    $("#validacao-email").html("Email informado não é válido.");
+                    return false;
+                }
+            }
+
+            if (senha != "") {
+                $("#senha").css("border-color", "green");
+                $("#validacao-senha").hide();
+
+                if (senha.length < 5) {
+                    $("#senha").focus();
+                    $("#senha").css("border-color", "red");
+                    $("#validacao-senha").show();
+                    $("#validacao-senha").html("Senha com menos de 5 caracteres.");
+                    return false;
+                }
+            }
+        }
+
+
+        $("button").click(function () {
+            var email = $("#email").val();
+            var senha = $("#senha").val();
+
+            var emailFiltro = "^.+.+\..{2,}$";
+            var emailInvalido = "[\(\)\<\>\,\;\:\\\/\"\[\]]";
+
+            if (email == "" && senha == "") {
+                $("#email").focus();
+                $("#email").css("border-color", "red");
+                $("#validacao-email").show();
+                $("#validacao-email").html("Por favor, informe o email.");
+
+                $("#senha").css("border-color", "red");
+                $("#validacao-senha").show();
+                $("#validacao-senha").html("Por favor, informe a senha.");
+
+                return false;
+            }
+
+            if (email == "") {
+                $("#email").focus();
+                $("#email").css("border-color", "red");
+                $("#validacao-email").show();
+                $("#validacao-email").html("Por favor, informe o email.");
+                return false;
+            }
+
+            if (senha == "") {
+                $("#senha").focus();
+                $("#senha").css("border-color", "red");
+                $("#validacao-senha").show();
+                $("#validacao-senha").html("Por favor, informe a senha.");
+                return false;
+            }
+
+            if (!(emailFiltro.test(email)) || email.match(emailInvalido)) {
+                $("#email").focus();
+                $("#email").css("border-color", "red");
+                $("#validacao-email").show();
+                $("#validacao-email").html("Email informado não é válido.");
+                return false;
+            }
+
+            if (senha.length < 5) {
+                $("#senha").focus();
+                $("#senha").css("border-color", "red");
+                $("#validacao-senha").show();
+                $("#validacao-senha").html("Senha com menos de 5 caracteres.");
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBDTECModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Prioridade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarefa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataCriacao" Type="date" Nullable="false" />
+          <Property Name="DataTermino" Type="date" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="PrioridadeId" Type="int" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="TipoTarefaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoTarefa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBDTEC.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Prioridade">
+          <End Role="Prioridade" Type="Self.Prioridade" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="PrioridadeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoTarefa">
+          <End Role="TipoTarefa" Type="Self.TipoTarefa" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTarefa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="TipoTarefaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="UP_TOI_APAGAR_CALCULOS_REPETIDOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_EXPORT_001" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TIPO_TOI" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UP_TOI_ImpCalculado_TO_Calculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_ImpEncerramento_To_Toi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_ImpFaturados_To_ToiFaturamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_ImpGerado_TO_Toi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UP_TOI_Indicador_TOI_POR_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DBDTECModelStoreContainer">
+          <EntitySet Name="Prioridade" EntityType="Self.Prioridade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarefa" EntityType="Self.Tarefa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTarefa" EntityType="Self.TipoTarefa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Prioridade" Association="Self.FK_Prioridade">
+            <End Role="Prioridade" EntitySet="Prioridade" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status" Association="Self.FK_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoTarefa" Association="Self.FK_TipoTarefa">
+            <End Role="TipoTarefa" EntitySet="TipoTarefa" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBDTECModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Prioridade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tarefa" Relationship="Self.FK_Prioridade" FromRole="Prioridade" ToRole="Tarefa" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tarefa" Relationship="Self.FK_Status" FromRole="Status" ToRole="Tarefa" />
+        </EntityType>
+        <EntityType Name="Tarefa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataCriacao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataTermino" Type="DateTime" Precision="0" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="PrioridadeId" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prioridade" Relationship="Self.FK_Prioridade" FromRole="Tarefa" ToRole="Prioridade" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Status" FromRole="Tarefa" ToRole="Status" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario" FromRole="Tarefa" ToRole="Usuario" />
+          <Property Name="TipoTarefaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoTarefa" Relationship="DBDTECModel.FK_TipoTarefa" FromRole="Tarefa" ToRole="TipoTarefa" />
+        </EntityType>
+        <EntityType Name="TipoTarefa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tarefa" Relationship="DBDTECModel.FK_TipoTarefa" FromRole="TipoTarefa" ToRole="Tarefa" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tarefa" Relationship="Self.FK_Usuario" FromRole="Usuario" ToRole="Tarefa" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Prioridade">
+          <End Role="Prioridade" Type="Self.Prioridade" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prioridade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="PrioridadeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Tarefa" Type="Self.Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBDTECEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Prioridade" EntityType="Self.Prioridade" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Tarefa" EntityType="Self.Tarefa" />
+          <EntitySet Name="TipoTarefa" EntityType="Self.TipoTarefa" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <AssociationSet Name="FK_Prioridade" Association="Self.FK_Prioridade">
+            <End Role="Prioridade" EntitySet="Prioridade" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status" Association="Self.FK_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+          <FunctionImport Name="UP_TOI_APAGAR_CALCULOS_REPETIDOS" />
+          <FunctionImport Name="UP_TOI_EXPORT_001">
+          <Parameter Name="TIPO_TOI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UP_TOI_ImpCalculado_TO_Calculo" />
+          <FunctionImport Name="UP_TOI_ImpEncerramento_To_Toi" />
+          <FunctionImport Name="UP_TOI_ImpFaturados_To_ToiFaturamento" />
+          <FunctionImport Name="UP_TOI_ImpGerado_TO_Toi" />
+          <FunctionImport Name="UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" />
+          <FunctionImport Name="UP_TOI_Indicador_TOI_POR_STATUS" />
+          <AssociationSet Name="FK_TipoTarefa" Association="DBDTECModel.FK_TipoTarefa">
+            <End Role="TipoTarefa" EntitySet="TipoTarefa" />
+            <End Role="Tarefa" EntitySet="Tarefa" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TipoTarefa">
+          <End Type="DBDTECModel.TipoTarefa" Role="TipoTarefa" Multiplicity="1" />
+          <End Type="DBDTECModel.Tarefa" Role="Tarefa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTarefa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarefa">
+              <PropertyRef Name="TipoTarefaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBDTECModelStoreContainer" CdmEntityContainer="DBDTECEntities1">
+          <EntitySetMapping Name="Prioridade">
+            <EntityTypeMapping TypeName="DBDTECModel.Prioridade">
+              <MappingFragment StoreEntitySet="Prioridade">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DBDTECModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarefa">
+            <EntityTypeMapping TypeName="DBDTECModel.Tarefa">
+              <MappingFragment StoreEntitySet="Tarefa">
+                <ScalarProperty Name="TipoTarefaId" ColumnName="TipoTarefaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="DataCriacao" ColumnName="DataCriacao" />
+                <ScalarProperty Name="DataTermino" ColumnName="DataTermino" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="PrioridadeId" ColumnName="PrioridadeId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTarefa">
+            <EntityTypeMapping TypeName="DBDTECModel.TipoTarefa">
+              <MappingFragment StoreEntitySet="TipoTarefa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="DBDTECModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="DBDTECModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UP_TOI_APAGAR_CALCULOS_REPETIDOS" FunctionName="DBDTECModel.Store.UP_TOI_APAGAR_CALCULOS_REPETIDOS" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_EXPORT_001" FunctionName="DBDTECModel.Store.UP_TOI_EXPORT_001" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_ImpCalculado_TO_Calculo" FunctionName="DBDTECModel.Store.UP_TOI_ImpCalculado_TO_Calculo" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_ImpEncerramento_To_Toi" FunctionName="DBDTECModel.Store.UP_TOI_ImpEncerramento_To_Toi" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_ImpFaturados_To_ToiFaturamento" FunctionName="DBDTECModel.Store.UP_TOI_ImpFaturados_To_ToiFaturamento" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_ImpGerado_TO_Toi" FunctionName="DBDTECModel.Store.UP_TOI_ImpGerado_TO_Toi" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" FunctionName="DBDTECModel.Store.UP_TOI_Indicador_TOI_CRIADOS_POR_STATUS" />
+          <FunctionImportMapping FunctionImportName="UP_TOI_Indicador_TOI_POR_STATUS" FunctionName="DBDTECModel.Store.UP_TOI_Indicador_TOI_POR_STATUS" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
