@@ -19,39 +19,22 @@ namespace GerenciadorTarefas.Tests
         {
 
             Tarefa tarefa = new Tarefa();
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
+            bool result = false;
+
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
-            bool result = tarefas.Criar(tarefa);
-            Assert.IsFalse(result, "Não foi realizado o Cadastro");
+            
+            if(tarefas.Create() != null)
+            {
+                result = true;
+            }
+
+            Assert.IsTrue(result, "Não foi realizado o Cadastro");
             //Assert.Fail("Erro ao cadastrar");
 
         }
-        [TestMethod()]
-        public void EditTest()
-        {
 
-            Tarefa tarefa = new Tarefa();
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
-            tarefa.Titulo = "Nova Tarefa";
-            tarefa.Descricao = "Teste";
-            tarefa.UsuarioId = 1;
-            tarefa.Id = 1;
-            bool result = tarefas.Editar(tarefa);
-            Assert.IsFalse(result, "Não foi editado");
-        }
-        [TestMethod()]
-        public void DeleteTest()
-        {
-           
-            int id = 3;
-            bool result = tarefas.Deletar(id);
-            Assert.IsFalse(result, "Não foi realizado a Exclusao");
-            //Assert.Fail();
-        }
 
         [TestMethod()]
         public void DetailsTarefasTest()
@@ -61,8 +44,6 @@ namespace GerenciadorTarefas.Tests
             int id = 1;
 
             //Act
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
@@ -82,8 +63,6 @@ namespace GerenciadorTarefas.Tests
             int id = 0;
 
             //Act
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
@@ -103,8 +82,6 @@ namespace GerenciadorTarefas.Tests
             int? id = null;
 
             //Act
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
@@ -124,8 +101,6 @@ namespace GerenciadorTarefas.Tests
             int? id = 0;
 
             //Act
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
@@ -142,19 +117,19 @@ namespace GerenciadorTarefas.Tests
         {
             //Arrenge
             Tarefa tarefa = new Tarefa();
-            bool criado = true;
-
+            bool result = false;
             //Act
-            tarefa.Prioridade = 3;
-            tarefa.Status = 1;
             tarefa.Titulo = "Nova Tarefa";
             tarefa.Descricao = "Teste";
             tarefa.UsuarioId = 1;
             tarefa.Id = 0;
-            criado = tarefas.Criar(tarefa);
 
+            if (tarefas.Create() != null)
+            {
+                result = true;
+            }
             //Assert
-            Assert.IsFalse(criado);
+            Assert.IsTrue(result);
 
         }
 
