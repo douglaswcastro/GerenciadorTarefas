@@ -13,8 +13,8 @@ namespace GerenciadorTarefas.Controllers.Tests
     [TestClass()]
     public class TipoTarefasControllerTests : TipoTarefasController 
     {
-        [TestMethod()]
-        public void DetailsTest()
+        
+        /*public void DetailsTest()
         {
             //Arrenge
             TipoTarefa mockTipoTarefa = new TipoTarefa();
@@ -38,6 +38,6 @@ namespace GerenciadorTarefas.Controllers.Tests
 
             //Assert
             Assert.AreNotEqual(tipoTarefaEsperado.Create(tipoTarefaTeste), tipoTaretaAtual.Create(mockTipoTarefa));
-        }
+        }*/
     }
 }
